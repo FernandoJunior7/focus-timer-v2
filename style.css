@@ -1,0 +1,115 @@
+:root {
+
+    --text-color: #323238;
+    --timer-button-outline-focus: #323238;
+
+    /* sound-button */
+
+    --sound-button-background: #E1E1E6;
+    --sound-button-background-active: #02799D;
+    --sound-button-background-hover: #a1a1a6;
+    --sound-button-background-hover-active: #074e64;
+    --sound-button-outline-focus: #29292b;
+    --sound-button-outline-focus-active: #10d552;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+
+    color: var(--text-color);
+}
+
+#app {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12rem;
+
+    max-width: 900px;
+}
+
+#timer {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+#timer span {
+    font-size: 7.5rem;
+    /* por padrão line-height é 1.1 ou 1.2 vezes maior que a font-size, ao colcoar como 0.9, 
+    ele fica no tamanho ideal onde só cabe a fonte em si, sem espaços extras */
+    line-height: 0.9;
+}
+
+#timer-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+#timer-buttons button {
+    border: none;
+    background-color: transparent;
+
+    transition: .3s;
+}
+
+#timer-buttons button:hover, #timer-buttons button:focus {
+    transform: scale(1.1);
+}
+
+#timer-buttons button:focus {
+    outline: var(--timer-button-outline-focus) solid 2px;
+}
+
+#sounds-buttons {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+#sounds-buttons button {
+    border: none;
+    padding: 3rem;
+    border-radius: 1.5rem;
+
+    background-color: var(--sound-button-background);
+
+    transition: .3s;
+}
+
+#sounds-buttons button.active {
+    background-color: var(--sound-button-background-active);
+}
+
+#sounds-buttons button.active svg path {
+    fill: #fff;
+}
+
+
+#sounds-buttons button:hover, #sounds-buttons button:focus {
+    background-color: var(--sound-button-background-hover);
+    transform: scale(1.1);
+}
+
+#sounds-buttons button:focus {
+    outline: var(--sound-button-outline-focus) solid 2px;
+}
+
+#sounds-buttons button.active:hover, #sounds-buttons button.active:focus {
+    background-color: var(--sound-button-background-hover-active);
+}
+
+#sounds-buttons button.active:focus {
+    outline: var(--sound-button-outline-focus-active) solid 2px;
+    filter: saturate(1.5);
+}
