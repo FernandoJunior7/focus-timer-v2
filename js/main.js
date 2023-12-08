@@ -11,6 +11,9 @@ const resetBtn = document.getElementById('reset');
 const addTimeBtn = document.getElementById('add-time');
 const subtractTimeBtn = document.getElementById('subtract-time');
 
+// themes button
+const themeButton = document.querySelector('#toggle-theme button');
+const rootElement = document.documentElement;
 
 // sounds button
 
@@ -94,6 +97,12 @@ subtractTimeBtn.addEventListener('click', function() {
     let minutesValue = parseInt(minutes.innerHTML);
     minutesValue -= 5;
     minutes.innerHTML = minutesValue.toString().padStart(2, "0");
+});
+
+// THEMES EVENT LISTENER
+themeButton.addEventListener('click', function () {
+    rootElement.classList.toggle('light');
+    rootElement.classList.toggle('dark')
 });
 
 // SOUNDS EVENT LISTENER

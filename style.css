@@ -1,7 +1,12 @@
-:root {
+:root.light {
 
+    --background-color: #fff;
     --text-color: #323238;
     --timer-button-outline-focus: #323238;
+
+    /* theme icons */
+    --theme-icon-color: #323238;
+    --theme-icon-color-hover: #abb02a;
 
     /* sound-button */
 
@@ -11,6 +16,26 @@
     --sound-button-background-hover-active: #074e64;
     --sound-button-outline-focus: #29292b;
     --sound-button-outline-focus-active: #10d552;
+}
+
+:root.dark {
+
+    --background-color: #404040;
+    --text-color: #fff;
+    --timer-button-outline-focus: #fff;
+
+    /* theme icons */
+    --theme-icon-color: #fff;
+    --theme-icon-color-hover: #ddff00;
+
+    /* sound-button */
+
+    --sound-button-background: #E1E1E6;
+    --sound-button-background-active: #1fb3e0;
+    --sound-button-background-hover: #a1a1a6;
+    --sound-button-background-hover-active: #2484a1;
+    --sound-button-outline-focus: #29292b;
+    --sound-button-outline-focus-active: #106cd5;
 }
 
 * {
@@ -25,7 +50,38 @@ body {
     place-content: center;
     min-height: 100vh;
 
+    background-color: var(--background-color);
     color: var(--text-color);
+}
+
+#toggle-theme {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
+#toggle-theme button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.icon {
+    height: 3rem;
+    width: 3rem;
+    color: var(--theme-icon-color);
+
+    transition: .3s;
+}
+
+.icon:hover {
+    color: var(--theme-icon-color-hover);
+    transform: scale(1.2);
+}
+
+:root.light .light,
+:root.dark .dark {
+    display: none;
 }
 
 #app {
@@ -68,6 +124,10 @@ body {
 
 #timer-buttons button:focus {
     outline: var(--timer-button-outline-focus) solid 2px;
+}
+
+#timer-buttons button svg path {
+    fill: var(--text-color);
 }
 
 #sounds-buttons {
