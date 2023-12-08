@@ -173,3 +173,28 @@ body {
     outline: var(--sound-button-outline-focus-active) solid 2px;
     filter: saturate(1.5);
 }
+
+/* MEDIA QUERIES */
+@media (max-width: 900px) {
+    #app {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 700px) {
+    #app {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #toggle-theme {
+        top: 1rem;
+        right: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    #app {
+        margin-top: 3rem;
+    }
+}
