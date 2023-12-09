@@ -23,12 +23,12 @@ const coffeeShopBtn = document.getElementById('coffee-shop');
 const fireBtn = document.getElementById('fire');
 
 // sounds
-const forestSound = new Audio('../sounds/Forest.wav');
-const rainSound = new Audio('../sounds/Rain.wav');
-const coffeeShopSound = new Audio('../sounds/Coffee-Shop.wav');
-const fireSound = new Audio('../sounds/Fire.wav');
-const buttonPress = new Audio('../sounds/Button-press.wav');
-const kitchenTimer = new Audio('../sounds/Kitchen-Timer.mp3');
+const forestSound = new Audio('focus-timer-v2/sounds/Forest.wav');
+const rainSound = new Audio('focus-timer-v2/sounds/Rain.wav');
+const coffeeShopSound = new Audio('focus-timer-v2/sounds/Coffee-Shop.wav');
+const fireSound = new Audio('focus-timer-v2/sounds/Fire.wav');
+const buttonPress = new Audio('focus-timer-v2/sounds/Button-press.wav');
+const kitchenTimer = new Audio('focus-timer-v2/sounds/Kitchen-Timer.mp3');
 
 
 // TIMER FUNCTION 
