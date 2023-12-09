@@ -1,41 +1,59 @@
 :root.light {
 
-    --background-color: #fff;
-    --text-color: #323238;
-    --timer-button-outline-focus: #323238;
+    --primary-color-base100: #fff;
+    --primary-color-base500: #edebeb;
+    --primary-color-base700: #aaa9a9;
 
-    /* theme icons */
-    --theme-icon-color: #323238;
-    --theme-icon-color-hover: #abb02a;
+    --secondary-color-base100: #323238;
 
-    /* sound-button */
+    --accent-color: #a061da;
 
-    --sound-button-background: #E1E1E6;
-    --sound-button-background-active: #02799D;
-    --sound-button-background-hover: #a1a1a6;
-    --sound-button-background-hover-active: #074e64;
-    --sound-button-outline-focus: #29292b;
-    --sound-button-outline-focus-active: #10d552;
+    --yellow-base100: #abb02a;
+    
+    --lightgreen: #00ff00;
+    --green-base100: #5bd85b9e;
+    --green-base500: #309a309e;
+
+    --lightblue: #0073ff;
+    --blue-base100: #5b93d89e;
+    --blue-base500: #3a69a39e;
+
+    --lightred: #ff0000;
+    --red-base100: #e333339e;
+    --red-base500: #871c1c9e;
+
+    --lightbrown: #ffb871;
+    --brown-base100: #d8995b9e;
+    --brown-base500: #9b6a399e;
 }
 
 :root.dark {
 
-    --background-color: #404040;
-    --text-color: #fff;
-    --timer-button-outline-focus: #fff;
+    --primary-color-base100: #323238;
+    --primary-color-base500: #565662;
+    --primary-color-base700: #aaa9a9;
 
-    /* theme icons */
-    --theme-icon-color: #fff;
-    --theme-icon-color-hover: #ddff00;
+    --secondary-color-base100: #ffffff;
 
-    /* sound-button */
+    --accent-color: #a061da;
 
-    --sound-button-background: #E1E1E6;
-    --sound-button-background-active: #1fb3e0;
-    --sound-button-background-hover: #a1a1a6;
-    --sound-button-background-hover-active: #2484a1;
-    --sound-button-outline-focus: #29292b;
-    --sound-button-outline-focus-active: #106cd5;
+    --yellow-base100: #ffff00;
+
+    --lightgreen: #00ff00;
+    --green-base100: #5bd85b9e;
+    --green-base500: #309a309e;
+
+    --lightblue: #0073ff;
+    --blue-base100: #5b93d89e;
+    --blue-base500: #3a69a39e;
+
+    --lightred: #ff0000;
+    --red-base100: #e333339e;
+    --red-base500: #871c1c9e;
+
+    --lightbrown: #ffb871;
+    --brown-base100: #d8995b9e;
+    --brown-base500: #9b6a399e;
 }
 
 * {
@@ -50,8 +68,17 @@ body {
     place-content: center;
     min-height: 100vh;
 
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background-color: var(--primary-color-base100);
+    color: var(--secondary-color-base100);
+}
+
+button {
+    transition: .3s;
+}
+
+button:hover, button:focus {
+    cursor: pointer;
+    transform: scale(1.2);
 }
 
 #toggle-theme {
@@ -63,20 +90,18 @@ body {
 #toggle-theme button {
     background-color: transparent;
     border: none;
-    cursor: pointer;
 }
 
 .icon {
     height: 3rem;
     width: 3rem;
-    color: var(--theme-icon-color);
+    color: var(--secondary-color-base100);
 
     transition: .3s;
 }
 
 #toggle-theme .icon:hover {
-    color: var(--theme-icon-color-hover);
-    transform: scale(1.2);
+    color: var(--yellow-base100);
 }
 
 :root.light .light,
@@ -109,6 +134,10 @@ body {
 #timer-buttons {
     display: flex;
     justify-content: space-around;
+
+    background-color: var(--primary-color-base500);
+    border-radius: 999px;
+    padding: 1rem 1.5rem;
 }
 
 #timer-buttons button {
@@ -118,12 +147,12 @@ body {
     transition: .3s;
 }
 
-#timer-buttons button:hover, #timer-buttons button:focus {
-    transform: scale(1.1);
+#timer-buttons button:hover .icon, #timer-buttons button:focus .icon {
+    color: var(--accent-color);
 }
 
 #timer-buttons button:focus {
-    outline: var(--timer-button-outline-focus) solid 2px;
+    outline: var(--secondary-color-base100) solid 2px;
 }
 
 #sounds-buttons {
@@ -138,32 +167,62 @@ body {
     padding: 3rem;
     border-radius: 1.5rem;
 
-    background-color: var(--sound-button-background);
+    background-color: var(--primary-color-base500);
 
     transition: .3s;
 }
 
-#sounds-buttons button.active {
-    background-color: var(--sound-button-background-active);
+#sounds-buttons button#forest.active {
+    background-color: var(--green-base100);
 }
 
-
-#sounds-buttons button:hover, #sounds-buttons button:focus {
-    background-color: var(--sound-button-background-hover);
-    transform: scale(1.1);
+#sounds-buttons button#forest.active:hover,
+#sounds-buttons button#forest.active:focus {
+    background-color: var(--green-base500);
 }
 
-#sounds-buttons button:focus {
-    outline: var(--sound-button-outline-focus) solid 2px;
+#sounds-buttons button#forest.active:hover .icon,
+#sounds-buttons button#forest.active:focus .icon {
+    color: var(--lightgreen);
 }
 
-#sounds-buttons button.active:hover, #sounds-buttons button.active:focus {
-    background-color: var(--sound-button-background-hover-active);
+#sounds-buttons button#rain.active {
+    background-color: var(--blue-base100);
 }
 
-#sounds-buttons button.active:focus {
-    outline: var(--sound-button-outline-focus-active) solid 2px;
-    filter: saturate(1.5);
+#sounds-buttons button#rain.active:hover {
+    background-color: var(--blue-base500);
+}
+
+#sounds-buttons button#rain.active:hover .icon,
+#sounds-buttons button#rain.active:focus .icon {
+    color: var(--lightblue);
+}
+
+#sounds-buttons button#coffee-shop.active {
+    background-color: var(--brown-base100);
+}
+
+#sounds-buttons button#coffee-shop.active:hover {
+    background-color: var(--brown-base500);
+}
+
+#sounds-buttons button#coffee-shop.active:hover .icon,
+#sounds-buttons button#coffee-shop.active:focus .icon {
+    color: var(--lightbrown);
+}
+
+#sounds-buttons button#fire.active {
+    background-color: var(--red-base100);
+}
+
+#sounds-buttons button#fire.active:hover {
+    background-color: var(--red-base500);
+}
+
+#sounds-buttons button#fire.active:hover .icon,
+#sounds-buttons button#fire.active:focus .icon {
+    color: var(--lightred);
 }
 
 /* MEDIA QUERIES */
