@@ -74,7 +74,7 @@ body {
     transition: .3s;
 }
 
-.icon:hover {
+#toggle-theme .icon:hover {
     color: var(--theme-icon-color-hover);
     transform: scale(1.2);
 }
@@ -126,10 +126,6 @@ body {
     outline: var(--timer-button-outline-focus) solid 2px;
 }
 
-#timer-buttons button svg path {
-    fill: var(--text-color);
-}
-
 #sounds-buttons {
     display: grid;
     gap: 2rem;
@@ -149,10 +145,6 @@ body {
 
 #sounds-buttons button.active {
     background-color: var(--sound-button-background-active);
-}
-
-#sounds-buttons button.active svg path {
-    fill: #fff;
 }
 
 
