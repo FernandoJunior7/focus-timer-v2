@@ -134,6 +134,10 @@ button:hover, button:focus {
     color: var(--light-accent-color);
 }
 
+#select-mode button.selected:focus {
+    outline-color: var(--light-accent-color);
+}
+
 #select-mode.pomodoro {
     background: linear-gradient(90deg, var(--accent-color) 50%, var(--primary-color-base500) 55%);
 }
