@@ -1,5 +1,10 @@
 let isCounting = false;
 
+// select mode button
+const selectMode = document.getElementById('select-mode')
+const pomodoro = document.getElementById('pomodoro-button');
+const stopwatch = document.getElementById('stopwatch-button');
+
 // timer
 const minutes = document.getElementById('minutes');
 const seconds = document.getElementById('seconds');
@@ -63,6 +68,23 @@ function countdown() {
     setTimeout(countdown, 1000);
 }
 
+// SELECT MODE EVENT LISTENER
+
+// acho que da pra melhorar, ta repetindo aqui
+pomodoro.addEventListener('click', function() {
+    pomodoro.classList.toggle('selected');
+    stopwatch.classList.toggle('selected');
+    selectMode.classList.toggle('pomodoro');
+    selectMode.classList.toggle('stopwatch');
+});
+
+stopwatch.addEventListener('click', function() {
+    pomodoro.classList.toggle('selected');
+    stopwatch.classList.toggle('selected');
+    selectMode.classList.toggle('pomodoro');
+    selectMode.classList.toggle('stopwatch');
+});
+
 // TIMER EVENT LISTENER
 
 startBtn.addEventListener('click', function() {
@@ -102,7 +124,7 @@ subtractTimeBtn.addEventListener('click', function() {
 // THEMES EVENT LISTENER
 themeButton.addEventListener('click', function () {
     rootElement.classList.toggle('light');
-    rootElement.classList.toggle('dark')
+    rootElement.classList.toggle('dark');
 });
 
 // SOUNDS EVENT LISTENER

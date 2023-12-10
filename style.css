@@ -6,7 +6,8 @@
 
     --secondary-color-base100: #323238;
 
-    --accent-color: #a061da;
+    --light-accent-color: #8400ff;
+    --accent-color: #a061da9e;
 
     --yellow-base100: #abb02a;
     
@@ -35,7 +36,8 @@
 
     --secondary-color-base100: #ffffff;
 
-    --accent-color: #a061da;
+    --light-accent-color: #8400ff;
+    --accent-color: #a061da9e;
 
     --yellow-base100: #ffff00;
 
@@ -124,6 +126,22 @@ button:hover, button:focus {
     gap: 3rem;
 }
 
+#select-mode button {
+    font-size: 1rem;
+}
+
+#select-mode button.selected:hover, #select-mode button.selected:focus  {
+    color: var(--light-accent-color);
+}
+
+#select-mode.pomodoro {
+    background: linear-gradient(90deg, var(--accent-color) 50%, var(--primary-color-base500) 55%);
+}
+
+#select-mode.stopwatch {
+    background: linear-gradient(-90deg, var(--accent-color) 50%, var(--primary-color-base500) 55%);
+}
+
 #timer span {
     font-size: 7.5rem;
     /* por padrão line-height é 1.1 ou 1.2 vezes maior que a font-size, ao colcoar como 0.9, 
@@ -131,16 +149,18 @@ button:hover, button:focus {
     line-height: 0.9;
 }
 
-#timer-buttons {
+#timer-buttons, #select-mode {
     display: flex;
     justify-content: space-around;
 
     background-color: var(--primary-color-base500);
     border-radius: 999px;
     padding: 1rem 1.5rem;
+
+    transition: .3s;
 }
 
-#timer-buttons button {
+#timer-buttons button, #select-mode button {
     border: none;
     background-color: transparent;
 
@@ -151,7 +171,7 @@ button:hover, button:focus {
     color: var(--accent-color);
 }
 
-#timer-buttons button:focus {
+#timer-buttons button:focus, #select-mode button:focus {
     outline: var(--secondary-color-base100) solid 2px;
 }
 
