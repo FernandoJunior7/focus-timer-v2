@@ -1,3 +1,5 @@
+/* VARIABLES */
+
 :root.light {
 
     --primary-color-base100: #fff;
@@ -58,6 +60,8 @@
     --brown-base500: #9b6a399e;
 }
 
+/* GENERAL STYLING */
+
 * {
     margin: 0;
     padding: 0;
@@ -72,43 +76,6 @@ body {
 
     background-color: var(--primary-color-base100);
     color: var(--secondary-color-base100);
-}
-
-button {
-    transition: .3s;
-}
-
-button:hover, button:focus {
-    cursor: pointer;
-    transform: scale(1.2);
-}
-
-#toggle-theme {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-}
-
-#toggle-theme button {
-    background-color: transparent;
-    border: none;
-}
-
-.icon {
-    height: 3rem;
-    width: 3rem;
-    color: var(--secondary-color-base100);
-
-    transition: .3s;
-}
-
-#toggle-theme .icon:hover {
-    color: var(--yellow-base100);
-}
-
-:root.light .light,
-:root.dark .dark {
-    display: none;
 }
 
 #app {
@@ -126,32 +93,46 @@ button:hover, button:focus {
     gap: 3rem;
 }
 
-#select-mode button {
-    font-size: 1rem;
+button {
+    transition: .3s;
 }
 
-#select-mode button.selected:hover, #select-mode button.selected:focus  {
-    color: var(--light-accent-color);
+button:hover, button:focus {
+    cursor: pointer;
+    transform: scale(1.2);
 }
 
-#select-mode button.selected:focus {
-    outline-color: var(--light-accent-color);
+.icon {
+    height: 3rem;
+    width: 3rem;
+    color: var(--secondary-color-base100);
+
+    transition: .3s;
 }
 
-#select-mode.pomodoro {
-    background: linear-gradient(90deg, var(--accent-color) 50%, var(--primary-color-base500) 55%);
+/* TOGGLE THEME */
+
+#toggle-theme {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
 }
 
-#select-mode.stopwatch {
-    background: linear-gradient(-90deg, var(--accent-color) 50%, var(--primary-color-base500) 55%);
+#toggle-theme button {
+    background-color: transparent;
+    border: none;
 }
 
-#timer span {
-    font-size: 7.5rem;
-    /* por padrão line-height é 1.1 ou 1.2 vezes maior que a font-size, ao colcoar como 0.9, 
-    ele fica no tamanho ideal onde só cabe a fonte em si, sem espaços extras */
-    line-height: 0.9;
+#toggle-theme .icon:hover {
+    color: var(--yellow-base100);
 }
+
+:root.light .light,
+:root.dark .dark {
+    display: none;
+}
+
+/* SELECT MODE */
 
 #timer-buttons, #select-mode {
     display: flex;
@@ -171,13 +152,42 @@ button:hover, button:focus {
     transition: .3s;
 }
 
+#select-mode button.selected:hover, #select-mode button.selected:focus  {
+    color: var(--light-accent-color);
+}
+
+#select-mode button.selected:focus {
+    outline-color: var(--light-accent-color);
+}
+
+#select-mode.pomodoro {
+    background: linear-gradient(90deg, var(--accent-color) 50%, var(--primary-color-base500) 55%);
+}
+
+#select-mode.stopwatch {
+    background: linear-gradient(-90deg, var(--accent-color) 50%, var(--primary-color-base500) 55%);
+}
+
+/* TIMER */
+
+#timer span {
+    font-size: 7.5rem;
+    /* por padrão line-height é 1.1 ou 1.2 vezes maior que a font-size, ao colcoar como 0.9, 
+    ele fica no tamanho ideal onde só cabe a fonte em si, sem espaços extras */
+    line-height: 0.9;
+}
+
+/* TIMER BUTTONS */
+
 #timer-buttons button:hover .icon, #timer-buttons button:focus .icon {
     color: var(--accent-color);
 }
 
-#timer-buttons button:focus, #select-mode button:focus {
+#timer-buttons button:focus {
     outline: var(--secondary-color-base100) solid 2px;
 }
+
+/* SOUNDS BUTTONS */
 
 #sounds-buttons {
     display: grid;
@@ -250,6 +260,7 @@ button:hover, button:focus {
 }
 
 /* MEDIA QUERIES */
+
 @media (max-width: 900px) {
     #app {
         gap: 2rem;
