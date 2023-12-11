@@ -35,6 +35,10 @@ const fireSound = new Audio('./assets/fire.wav');
 const buttonPress = new Audio('./assets/buttonPress.wav');
 const kitchenTimer = new Audio('./assets/kitchenTimer.mp3');
 
+forestSound.loop = true;
+rainSound.loop = true;
+coffeeShopSound.loop = true;
+fireSound.loop = true;
 
 // TIMER FUNCTION 
 
