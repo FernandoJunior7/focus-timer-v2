@@ -160,11 +160,11 @@ button:hover, button:focus {
     outline-color: var(--light-accent-color);
 }
 
-#select-mode.pomodoro {
+#timer.pomodoro #select-mode {
     background: linear-gradient(90deg, var(--accent-color) 50%, var(--primary-color-base500) 55%);
 }
 
-#select-mode.stopwatch {
+#timer.stopwatch #select-mode {
     background: linear-gradient(-90deg, var(--accent-color) 50%, var(--primary-color-base500) 55%);
 }
 

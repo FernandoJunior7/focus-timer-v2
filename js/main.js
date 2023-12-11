@@ -1,7 +1,7 @@
 let isCounting = false;
 
 // select mode button
-const selectMode = document.getElementById('select-mode')
+const timer = document.getElementById('timer')
 const pomodoro = document.getElementById('pomodoro-button');
 const stopwatch = document.getElementById('stopwatch-button');
 
@@ -78,15 +78,15 @@ function countdown() {
 pomodoro.addEventListener('click', function() {
     pomodoro.classList.toggle('selected');
     stopwatch.classList.toggle('selected');
-    selectMode.classList.toggle('pomodoro');
-    selectMode.classList.toggle('stopwatch');
+    timer.classList.toggle('pomodoro');
+    timer.classList.toggle('stopwatch');
 });
 
 stopwatch.addEventListener('click', function() {
     pomodoro.classList.toggle('selected');
     stopwatch.classList.toggle('selected');
-    selectMode.classList.toggle('pomodoro');
-    selectMode.classList.toggle('stopwatch');
+    timer.classList.toggle('pomodoro');
+    timer.classList.toggle('stopwatch');
 });
 
 // TIMER EVENT LISTENER
