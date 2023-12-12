@@ -1,286 +1,297 @@
 /* VARIABLES */
 
 :root.light {
+	--primary-color-base100: #fff;
+	--primary-color-base500: #edebeb;
+	--primary-color-base700: #aaa9a9;
 
-    --primary-color-base100: #fff;
-    --primary-color-base500: #edebeb;
-    --primary-color-base700: #aaa9a9;
+	--secondary-color-base100: #323238;
 
-    --secondary-color-base100: #323238;
+	--light-accent-color: #8400ff;
+	--accent-color: #a061da9e;
 
-    --light-accent-color: #8400ff;
-    --accent-color: #a061da9e;
+	--yellow-base100: #abb02a;
 
-    --yellow-base100: #abb02a;
-    
-    --lightgreen: #00ff00;
-    --green-base100: #5bd85b9e;
-    --green-base500: #309a309e;
+	--lightgreen: #00ff00;
+	--green-base100: #5bd85b9e;
+	--green-base500: #309a309e;
 
-    --lightblue: #0073ff;
-    --blue-base100: #5b93d89e;
-    --blue-base500: #3a69a39e;
+	--lightblue: #0073ff;
+	--blue-base100: #5b93d89e;
+	--blue-base500: #3a69a39e;
 
-    --lightred: #ff0000;
-    --red-base100: #e333339e;
-    --red-base500: #871c1c9e;
+	--lightred: #ff0000;
+	--red-base100: #e333339e;
+	--red-base500: #871c1c9e;
 
-    --lightbrown: #ffb871;
-    --brown-base100: #d8995b9e;
-    --brown-base500: #9b6a399e;
+	--lightbrown: #ffb871;
+	--brown-base100: #d8995b9e;
+	--brown-base500: #9b6a399e;
 }
 
 :root.dark {
+	--primary-color-base100: #323238;
+	--primary-color-base500: #565662;
+	--primary-color-base700: #aaa9a9;
 
-    --primary-color-base100: #323238;
-    --primary-color-base500: #565662;
-    --primary-color-base700: #aaa9a9;
+	--secondary-color-base100: #ffffff;
 
-    --secondary-color-base100: #ffffff;
+	--light-accent-color: #8400ff;
+	--accent-color: #a061da9e;
 
-    --light-accent-color: #8400ff;
-    --accent-color: #a061da9e;
+	--yellow-base100: #ffff00;
 
-    --yellow-base100: #ffff00;
+	--lightgreen: #00ff00;
+	--green-base100: #5bd85b9e;
+	--green-base500: #309a309e;
 
-    --lightgreen: #00ff00;
-    --green-base100: #5bd85b9e;
-    --green-base500: #309a309e;
+	--lightblue: #0073ff;
+	--blue-base100: #5b93d89e;
+	--blue-base500: #3a69a39e;
 
-    --lightblue: #0073ff;
-    --blue-base100: #5b93d89e;
-    --blue-base500: #3a69a39e;
+	--lightred: #ff0000;
+	--red-base100: #e333339e;
+	--red-base500: #871c1c9e;
 
-    --lightred: #ff0000;
-    --red-base100: #e333339e;
-    --red-base500: #871c1c9e;
-
-    --lightbrown: #ffb871;
-    --brown-base100: #d8995b9e;
-    --brown-base500: #9b6a399e;
+	--lightbrown: #ffb871;
+	--brown-base100: #d8995b9e;
+	--brown-base500: #9b6a399e;
 }
 
 /* GENERAL STYLING */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    display: grid;
-    place-content: center;
-    min-height: 100vh;
+	font-family: 'Roboto', sans-serif;
+	display: grid;
+	place-content: center;
+	min-height: 100vh;
 
-    background-color: var(--primary-color-base100);
-    color: var(--secondary-color-base100);
+	background-color: var(--primary-color-base100);
+	color: var(--secondary-color-base100);
 }
 
 #app {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12rem;
 
-    max-width: 900px;
+	max-width: 900px;
 }
 
 #timer {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
 }
 
 button {
-    transition: .3s;
+	transition: 0.3s;
 }
 
-button:hover, button:focus {
-    cursor: pointer;
-    transform: scale(1.2);
+button:hover,
+button:focus {
+	cursor: pointer;
+	transform: scale(1.2);
 }
 
 .icon {
-    height: 3rem;
-    width: 3rem;
-    color: var(--secondary-color-base100);
+	height: 3rem;
+	width: 3rem;
+	color: var(--secondary-color-base100);
 
-    transition: .3s;
+	transition: 0.3s;
 }
 
 /* TOGGLE THEME */
 
 #toggle-theme {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
+	position: absolute;
+	top: 2rem;
+	right: 2rem;
 }
 
 #toggle-theme button {
-    background-color: transparent;
-    border: none;
+	background-color: transparent;
+	border: none;
 }
 
 #toggle-theme .icon:hover {
-    color: var(--yellow-base100);
+	color: var(--yellow-base100);
 }
 
 :root.light .light,
 :root.dark .dark {
-    display: none;
+	display: none;
 }
 
 /* SELECT MODE */
 
-#timer-buttons, #select-mode {
-    display: flex;
-    justify-content: space-around;
+#timer-buttons,
+#select-mode {
+	display: flex;
+	justify-content: space-around;
 
-    background-color: var(--primary-color-base500);
-    border-radius: 999px;
-    padding: 1rem 1.5rem;
+	background-color: var(--primary-color-base500);
+	border-radius: 999px;
+	padding: 1rem 1.5rem;
 
-    transition: .3s;
+	transition: 0.3s;
 }
 
-#timer-buttons button, #select-mode button {
-    border: none;
-    background-color: transparent;
+#timer-buttons button,
+#select-mode button {
+	border: none;
+	background-color: transparent;
 
-    transition: .3s;
+	transition: 0.3s;
 }
 
-#select-mode button.selected:hover, #select-mode button.selected:focus  {
-    color: var(--light-accent-color);
+#select-mode button.selected:hover,
+#select-mode button.selected:focus {
+	color: var(--light-accent-color);
 }
 
 #select-mode button.selected:focus {
-    outline-color: var(--light-accent-color);
+	outline-color: var(--light-accent-color);
 }
 
 #timer.pomodoro #select-mode {
-    background: linear-gradient(90deg, var(--accent-color) 50%, var(--primary-color-base500) 55%);
+	background: linear-gradient(
+		90deg,
+		var(--accent-color) 50%,
+		var(--primary-color-base500) 55%
+	);
 }
 
 #timer.stopwatch #select-mode {
-    background: linear-gradient(-90deg, var(--accent-color) 50%, var(--primary-color-base500) 55%);
+	background: linear-gradient(
+		-90deg,
+		var(--accent-color) 50%,
+		var(--primary-color-base500) 55%
+	);
 }
 
 /* TIMER */
 
 #timer span {
-    font-size: 7.5rem;
-    /* por padrão line-height é 1.1 ou 1.2 vezes maior que a font-size, ao colcoar como 0.9, 
+	font-size: 7.5rem;
+	/* por padrão line-height é 1.1 ou 1.2 vezes maior que a font-size, ao colcoar como 0.9, 
     ele fica no tamanho ideal onde só cabe a fonte em si, sem espaços extras */
-    line-height: 0.9;
+	line-height: 0.9;
 }
 
 /* TIMER BUTTONS */
 
-#timer-buttons button:hover .icon, #timer-buttons button:focus .icon {
-    color: var(--accent-color);
+#timer-buttons button:hover .icon,
+#timer-buttons button:focus .icon {
+	color: var(--accent-color);
 }
 
 #timer-buttons button:focus {
-    outline: var(--secondary-color-base100) solid 2px;
+	outline: var(--secondary-color-base100) solid 2px;
 }
 
 /* SOUNDS BUTTONS */
 
 #sounds-buttons {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+	display: grid;
+	gap: 2rem;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
 }
 
 #sounds-buttons button {
-    border: none;
-    padding: 3rem;
-    border-radius: 1.5rem;
+	border: none;
+	padding: 3rem;
+	border-radius: 1.5rem;
 
-    background-color: var(--primary-color-base500);
+	background-color: var(--primary-color-base500);
 
-    transition: .3s;
+	transition: 0.3s;
 }
 
 #sounds-buttons button#forest.active {
-    background-color: var(--green-base100);
+	background-color: var(--green-base100);
 }
 
 #sounds-buttons button#forest.active:hover,
 #sounds-buttons button#forest.active:focus {
-    background-color: var(--green-base500);
+	background-color: var(--green-base500);
 }
 
 #sounds-buttons button#forest.active:hover .icon,
 #sounds-buttons button#forest.active:focus .icon {
-    color: var(--lightgreen);
+	color: var(--lightgreen);
 }
 
 #sounds-buttons button#rain.active {
-    background-color: var(--blue-base100);
+	background-color: var(--blue-base100);
 }
 
 #sounds-buttons button#rain.active:hover {
-    background-color: var(--blue-base500);
+	background-color: var(--blue-base500);
 }
 
 #sounds-buttons button#rain.active:hover .icon,
 #sounds-buttons button#rain.active:focus .icon {
-    color: var(--lightblue);
+	color: var(--lightblue);
 }
 
 #sounds-buttons button#coffee-shop.active {
-    background-color: var(--brown-base100);
+	background-color: var(--brown-base100);
 }
 
 #sounds-buttons button#coffee-shop.active:hover {
-    background-color: var(--brown-base500);
+	background-color: var(--brown-base500);
 }
 
 #sounds-buttons button#coffee-shop.active:hover .icon,
 #sounds-buttons button#coffee-shop.active:focus .icon {
-    color: var(--lightbrown);
+	color: var(--lightbrown);
 }
 
 #sounds-buttons button#fire.active {
-    background-color: var(--red-base100);
+	background-color: var(--red-base100);
 }
 
 #sounds-buttons button#fire.active:hover {
-    background-color: var(--red-base500);
+	background-color: var(--red-base500);
 }
 
 #sounds-buttons button#fire.active:hover .icon,
 #sounds-buttons button#fire.active:focus .icon {
-    color: var(--lightred);
+	color: var(--lightred);
 }
 
 /* MEDIA QUERIES */
 
 @media (max-width: 900px) {
-    #app {
-        gap: 2rem;
-    }
+	#app {
+		gap: 2rem;
+	}
 }
 
 @media (max-width: 700px) {
-    #app {
-        display: flex;
-        flex-direction: column;
-    }
+	#app {
+		display: flex;
+		flex-direction: column;
+	}
 
-    #toggle-theme {
-        top: 1rem;
-        right: 1rem;
-    }
+	#toggle-theme {
+		top: 1rem;
+		right: 1rem;
+	}
 }
 
 @media (max-width: 400px) {
-    #app {
-        margin-top: 3rem;
-    }
+	#app {
+		margin-top: 3rem;
+	}
 }

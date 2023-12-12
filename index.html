@@ -1,60 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-br" class="light">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Focus Timer v2</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="./assets/Tomato icon.svg" type="image/x-icon">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Focus Timer v2</title>
+		<link rel="stylesheet" href="style.css" />
+		<link
+			rel="shortcut icon"
+			href="./assets/Tomato icon.svg"
+			type="image/x-icon"
+		/>
 		<script type="module" src="./js/main.js" defer></script>
-</head>
-<body>
-	<div id="toggle-theme">
-		<button><i class="icon light" data-lucide="sun"></i> <i class="icon dark" data-lucide="moon"></i></button>
-	</div>
-    <main id="app">
-        <div id="timer" class="pomodoro">
-					<div id="select-mode">
-						<button id="pomodoro-button" class="selected">Pomodoro</button>
-						<button id="stopwatch-button">Stopwatch</button>
-					</div>
-					<div id="time">
-            <span id="minutes">25</span>
-            <span>:</span>
-            <span id="seconds">00</span>
-					</div>
-					<div id="timer-buttons">
-						<button id="start">
-							<i class="icon" data-lucide="play-circle"></i>
-						</button>
-						<button id="reset">
-							<i class="icon" data-lucide="stop-circle"></i>								
-						</button>
-						<button id="add-time">
-							<i class="icon" data-lucide="plus-circle"></i>
-						</button>	
-						<button id="subtract-time">
-							<i class="icon" data-lucide="minus-circle"></i>
-						</button>
-					</div>
+	</head>
+	<body>
+		<div id="toggle-theme">
+			<button>
+				<i class="icon light" data-lucide="sun"></i>
+				<i class="icon dark" data-lucide="moon"></i>
+			</button>
+		</div>
+		<main id="app">
+			<div id="timer" class="pomodoro">
+				<div id="select-mode">
+					<button id="pomodoro-button" class="selected">Pomodoro</button>
+					<button id="stopwatch-button">Stopwatch</button>
 				</div>
-				<div id="sounds-buttons">
-					<button id="forest">
-						<i class="icon" data-lucide="tree-pine"></i>
+				<div id="time">
+					<span id="minutes">25</span>
+					<span>:</span>
+					<span id="seconds">00</span>
+				</div>
+				<div id="timer-buttons">
+					<button id="start">
+						<i class="icon" data-lucide="play-circle"></i>
 					</button>
-					<button id="rain">
-						<i class="icon" data-lucide="cloud-rain"></i>
+					<button id="reset">
+						<i class="icon" data-lucide="stop-circle"></i>
 					</button>
-					<button id="coffee-shop">
-						<i class="icon" data-lucide="store"></i>
+					<button id="add-time">
+						<i class="icon" data-lucide="plus-circle"></i>
 					</button>
-					<button id="fire">
-						<i class="icon" data-lucide="flame"></i>
+					<button id="subtract-time">
+						<i class="icon" data-lucide="minus-circle"></i>
 					</button>
 				</div>
-    </main>
+			</div>
+			<div id="sounds-buttons">
+				<button id="forest">
+					<i class="icon" data-lucide="tree-pine"></i>
+				</button>
+				<button id="rain">
+					<i class="icon" data-lucide="cloud-rain"></i>
+				</button>
+				<button id="coffee-shop">
+					<i class="icon" data-lucide="store"></i>
+				</button>
+				<button id="fire">
+					<i class="icon" data-lucide="flame"></i>
+				</button>
+			</div>
+		</main>
 
-	<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-	<script>lucide.createIcons();</script>
-</body>
+		<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+		<script>
+			lucide.createIcons();
+		</script>
+	</body>
 </html>
