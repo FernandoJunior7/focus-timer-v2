@@ -3,6 +3,13 @@ import { minutes, seconds, resetBtn } from './elements.js';
 import { kitchenTimer } from './sounds.js';
 
 export function updateDisplay(minutesValue, secondsValue) {
+  /**
+   * Updates the display of the minutes and seconds on the timer.
+   * 
+   * @param {number} minutesValue - The value of the minutes to be displayed on the timer.
+   * @param {number} secondsValue - The value of the seconds to be displayed on the timer.
+   * @returns {void}
+   */
   minutesValue = minutesValue ?? state.minutes;
   secondsValue = secondsValue ?? state.seconds;
 
@@ -14,31 +21,27 @@ export function countdown() {
   let minutesValue = parseInt(minutes.textContent);
   let secondsValue = parseInt(seconds.textContent);
 
-  // parar quando chegar em 0
   if (minutesValue === 0 && secondsValue === 0) {
-      kitchenTimer.play();
-      if(!state.isBreak){
+    kitchenTimer.play();
+    if (!state.isBreak) {
       state.isCounting = false;
       timerBreak();
-      }
-      resetBtn.click();
-      return;
+    }
+    resetBtn.click();
+    return;
   }
 
-  // parar quando clicar no botão resetar (isCounting = false)
-  if (!state.isCounting) {
-      return;
-  }
+  if (!state.isCounting) return;
 
   if (secondsValue === 0) {
-      minutesValue--;
-      secondsValue = 59;
+    minutesValue--;
+    secondsValue = 59;
   } else {
-      secondsValue--;
+    secondsValue--;
   }
 
   updateDisplay(minutesValue, secondsValue);
-  
+
   setTimeout(countdown, 1000);
 }
 

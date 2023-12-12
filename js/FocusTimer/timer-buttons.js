@@ -3,11 +3,8 @@ import { startBtn, resetBtn, addTimeBtn, subtractTimeBtn, minutes, seconds } fro
 import * as sounds from './sounds.js';
 import state from './state.js';
 
-
 startBtn.addEventListener('click', function() {
-  if (state.isCounting) {
-      return;
-  }
+  if (state.isCounting) return;
   sounds.buttonPress.play();
   state.isCounting = true;
   timer.countdown();
@@ -21,21 +18,13 @@ resetBtn.addEventListener('click', function() {
 });
 
 addTimeBtn.addEventListener('click', function() {
-  if (state.isCounting) {
-      return;
-  }
-  let minutesValue = parseInt(minutes.textContent);
-  minutesValue += 5;
-  state.minutes = minutesValue;
-  minutes.textContent = minutesValue.toString().padStart(2, "0");
+  if (state.isCounting) return;
+  state.minutes += 5;
+  minutes.textContent = state.minutes.toString().padStart(2, "0");
 });
 
 subtractTimeBtn.addEventListener('click', function() {
-  if(state.isCounting) {
-      return;
-  }
-  let minutesValue = parseInt(minutes.textContent);
-  minutesValue -= 5;
-  state.minutes = minutesValue;
-  minutes.textContent = minutesValue.toString().padStart(2, "0");
+  if(state.isCounting) return;
+  state.minutes -= 5;
+  minutes.textContent = state.minutes.toString().padStart(2, "0");
 });
