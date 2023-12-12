@@ -1,30 +1,10 @@
-import * as timer from './timer.js';
 import { startBtn, resetBtn, addTimeBtn, subtractTimeBtn, minutes, seconds } from "./elements.js";
-import * as sounds from './sounds.js';
-import state from './state.js';
+import { start, reset, addTime, subtractTime } from './actions.js';
 
-startBtn.addEventListener('click', function() {
-  if (state.isCounting) return;
-  sounds.buttonPress.play();
-  state.isCounting = true;
-  timer.countdown();
-}); 
+startBtn.addEventListener('click', start); 
 
-resetBtn.addEventListener('click', function() {
-  sounds.buttonPress.play();
-  state.isCounting = false;
-  minutes.textContent = String(state.minutes).padStart(2, '0');
-  seconds.textContent = String(state.seconds).padStart(2, '0');
-});
+resetBtn.addEventListener('click', reset);
 
-addTimeBtn.addEventListener('click', function() {
-  if (state.isCounting) return;
-  state.minutes += 5;
-  minutes.textContent = state.minutes.toString().padStart(2, "0");
-});
+addTimeBtn.addEventListener('click', addTime);
 
-subtractTimeBtn.addEventListener('click', function() {
-  if(state.isCounting) return;
-  state.minutes -= 5;
-  minutes.textContent = state.minutes.toString().padStart(2, "0");
-});
+subtractTimeBtn.addEventListener('click', subtractTime);

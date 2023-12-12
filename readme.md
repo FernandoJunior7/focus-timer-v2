@@ -3,6 +3,7 @@
 - Esse projeto está em desenvolvimento e busca ser um timer pomodoro ou flowmodoro (ao utilizar o stopwatch) prático e simples de ser usado. É um projeto que começou a ser desenvolvido como um desafio do stage 05 da rocketseat, mas que decidi implementar novas funcionalidades pois curti de faze-lo.
 
 ## TODO
+
 - [ ] Acessbilidade com elementos "screen readers only"
 - [X] Implementar o sistema de pausas
 - [ ] Adicionar o sistema de stopwatch

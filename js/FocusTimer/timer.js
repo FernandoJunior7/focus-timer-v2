@@ -1,6 +1,8 @@
 import state from './state.js';
-import { minutes, seconds, resetBtn } from './elements.js';
+import pomodoro from './pomodoro-settings.js';
+import { minutes, seconds } from './elements.js';
 import { kitchenTimer } from './sounds.js';
+import { reset } from './actions.js';
 
 export function updateDisplay(minutesValue, secondsValue) {
   /**
@@ -10,8 +12,8 @@ export function updateDisplay(minutesValue, secondsValue) {
    * @param {number} secondsValue - The value of the seconds to be displayed on the timer.
    * @returns {void}
    */
-  minutesValue = minutesValue ?? state.minutes;
-  secondsValue = secondsValue ?? state.seconds;
+  minutesValue = minutesValue ?? pomodoro.minutes;
+  secondsValue = secondsValue ?? pomodoro.seconds;
 
   minutes.textContent = String(minutesValue).padStart(2, '0');
   seconds.textContent = String(secondsValue).padStart(2, '0');
@@ -27,7 +29,7 @@ export function countdown() {
       state.isCounting = false;
       timerBreak();
     }
-    resetBtn.click();
+    reset();
     return;
   }
 
