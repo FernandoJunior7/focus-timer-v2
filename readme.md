@@ -4,7 +4,7 @@
 
 ## TODO
 - [ ] Acessbilidade com elementos "screen readers only"
-- [ ] Implementar o sistema de pausas
+- [X] Implementar o sistema de pausas
 - [ ] Adicionar o sistema de stopwatch
 - [ ] Adicionar o menu de configurações
   - [ ] Personalizar qual será a cor primária

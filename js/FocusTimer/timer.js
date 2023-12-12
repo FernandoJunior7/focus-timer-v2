@@ -1,5 +1,6 @@
 import state from './state.js';
-import { minutes, seconds } from './elements.js';
+import { minutes, seconds, resetBtn } from './elements.js';
+import { kitchenTimer } from './sounds.js';
 
 export function updateDisplay(minutesValue, secondsValue) {
   minutesValue = minutesValue ?? state.minutes;
@@ -16,7 +17,11 @@ export function countdown() {
   // parar quando chegar em 0
   if (minutesValue === 0 && secondsValue === 0) {
       kitchenTimer.play();
+      if(!state.isBreak){
       state.isCounting = false;
+      timerBreak();
+      }
+      resetBtn.click();
       return;
   }
 
@@ -35,4 +40,12 @@ export function countdown() {
   updateDisplay(minutesValue, secondsValue);
   
   setTimeout(countdown, 1000);
+}
+
+export function timerBreak() {
+  state.isBreak = true;
+  let breakMinute = state.minutes / 5;
+
+  minutes.textContent = String(breakMinute).padStart(2, '0');
+  countdown();
 }

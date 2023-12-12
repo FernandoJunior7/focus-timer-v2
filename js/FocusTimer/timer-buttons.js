@@ -26,6 +26,7 @@ addTimeBtn.addEventListener('click', function() {
   }
   let minutesValue = parseInt(minutes.textContent);
   minutesValue += 5;
+  state.minutes = minutesValue;
   minutes.textContent = minutesValue.toString().padStart(2, "0");
 });
 
@@ -35,5 +36,6 @@ subtractTimeBtn.addEventListener('click', function() {
   }
   let minutesValue = parseInt(minutes.textContent);
   minutesValue -= 5;
+  state.minutes = minutesValue;
   minutes.textContent = minutesValue.toString().padStart(2, "0");
 });

@@ -4,4 +4,4 @@ import './FocusTimer/timer-buttons.js';
 import './FocusTimer/sounds-buttons.js';
 import './FocusTimer/select-mode.js';
 
-focusTimer.start();
+focusTimer.start(0, 6);
