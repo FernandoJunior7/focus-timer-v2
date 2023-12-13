@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br" class="light">
 	<head>
+		<meta
+			name="description"
+			content="Um timer pomodoro para alavancar sua produtividade"
+		/>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Focus Timer v2</title>
+		<title>Focus Timer v2 - Pomodoro</title>
 		<link rel="stylesheet" href="style.css" />
 		<link
 			rel="shortcut icon"
@@ -43,6 +47,10 @@
 					<button id="subtract-time">
 						<i class="icon" data-lucide="minus-circle"></i>
 					</button>
+				</div>
+				<div id="time-error" class="hide">
+					<i class="icon" data-lucide="alert-circle"></i>
+					<span class="error-message">mensagem de erro</span>
 				</div>
 			</div>
 			<div id="sounds-buttons">

@@ -1,5 +1,4 @@
 /* VARIABLES */
-
 :root.light {
 	--primary-color-base100: #fff;
 	--primary-color-base500: #edebeb;
@@ -89,6 +88,8 @@ body {
 	display: flex;
 	flex-direction: column;
 	gap: 3rem;
+
+	position: relative;
 }
 
 button {
@@ -127,7 +128,8 @@ button:focus {
 }
 
 :root.light .light,
-:root.dark .dark {
+:root.dark .dark,
+#time-error.hide {
 	display: none;
 }
 
@@ -180,7 +182,7 @@ button:focus {
 
 /* TIMER */
 
-#timer span {
+#time span {
 	font-size: 7.5rem;
 	/* por padrão line-height é 1.1 ou 1.2 vezes maior que a font-size, ao colcoar como 0.9, 
     ele fica no tamanho ideal onde só cabe a fonte em si, sem espaços extras */
@@ -196,6 +198,47 @@ button:focus {
 
 #timer-buttons button:focus {
 	outline: var(--secondary-color-base100) solid 2px;
+}
+
+/* ERROR MESSAGE */
+
+#time-error {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	border-radius: 1.5rem;
+	padding: 0.5rem 1rem;
+	background-color: var(--red-base100);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	gap: 1rem;
+
+	animation: appear 10s;
+}
+
+#time-error .icon {
+	height: 2rem;
+	width: 2rem;
+	color: var(--primary-color-base100);
+}
+
+#time-error span {
+	font-size: 1rem;
+	color: var(--primary-color-base100);
+	text-transform: uppercase;
+}
+
+@keyframes appear {
+	25% {
+		bottom: -6rem;
+	}
+
+	100% {
+		bottom: -6rem;
+	}
 }
 
 /* SOUNDS BUTTONS */

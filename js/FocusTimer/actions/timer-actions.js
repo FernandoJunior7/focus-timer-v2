@@ -18,16 +18,22 @@ export function reset() {
 	seconds.textContent = String(pomodoro.seconds).padStart(2, '0');
 }
 
-// TODO: A MODAL ERROR DISPLAYING IT CANNOT BE ABOVE 60 MINUTES
+// TODO:
 export function addTime() {
-	if (state.isCounting || pomodoro.minutes === 60) return;
+	if (state.isCounting || state.isBreak || pomodoro.minutes === 60) {
+		timer.timerError();
+		return;
+	}
 	pomodoro.minutes += 5;
 	minutes.textContent = pomodoro.minutes.toString().padStart(2, '0');
 }
 
 // TODO: A MODAL ERROR DISPLAYING IT CANNOT BE UNDER 25 MINUTES
 export function subtractTime() {
-	if (state.isCounting || pomodoro.minutes === 25) return;
+	if (state.isCounting || state.isBreak || pomodoro.minutes === 25) {
+		timer.timerError();
+		return;
+	}
 	pomodoro.minutes -= 5;
 	minutes.textContent = pomodoro.minutes.toString().padStart(2, '0');
 }
