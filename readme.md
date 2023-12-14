@@ -6,7 +6,7 @@
 
 - [ ] Acessbilidade com elementos "screen readers only"
 - [x] Implementar o sistema de pausas
-- [ ] Adicionar o sistema de stopwatch
+- [x] Adicionar o sistema de stopwatch
 - [ ] Adicionar o menu de configurações
   - [ ] Personalizar qual será a cor primária
   - [ ] Personalizar qual será a cor secundária (accent)

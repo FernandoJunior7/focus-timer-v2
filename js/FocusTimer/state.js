@@ -1,6 +1,14 @@
 export default {
 	isCounting: false,
 	isBreak: false,
-	mode: 'pomodoro',
-	theme: 'light',
+	currentMode: 'pomodoro',
+	modeMap: {
+		pomodoro: 'stopwatch',
+		stopwatch: 'pomodoro',
+	},
+	currentTheme: 'light',
+	themeMap: {
+		light: 'dark',
+		dark: 'light',
+	},
 };

@@ -12,8 +12,14 @@ export function updateDisplay(minutesValue, secondsValue) {
 	 * @param {number} secondsValue - The value of the seconds to be displayed on the timer.
 	 * @returns {void}
 	 */
-	minutesValue = minutesValue ?? pomodoro.minutes;
-	secondsValue = secondsValue ?? pomodoro.seconds;
+
+	if (state.currentMode === 'pomodoro') {
+		minutesValue = minutesValue ?? pomodoro.minutes;
+		secondsValue = secondsValue ?? pomodoro.seconds;
+	} else {
+		minutesValue = 0;
+		secondsValue = 0;
+	}
 
 	minutes.textContent = String(minutesValue).padStart(2, '0');
 	seconds.textContent = String(secondsValue).padStart(2, '0');

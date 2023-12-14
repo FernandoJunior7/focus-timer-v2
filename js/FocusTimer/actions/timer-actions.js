@@ -3,7 +3,6 @@ import state from '../state.js';
 import pomodoro from '../pomodoro-settings.js';
 import * as timer from '../timer.js';
 import { minutes } from '../elements/time.js';
-import { updateTimerDisplay } from './mode-actions.js';
 
 export function start() {
 	if (state.isCounting) return;
@@ -22,7 +21,7 @@ export function reset() {
 	if (state.mode === 'stopwatch' && Number(minutes.textContent) > 0) {
 		timer.timerBreak(minutes.textContent);
 	} else {
-		updateTimerDisplay();
+		updateDisplay();
 	}
 }
 
