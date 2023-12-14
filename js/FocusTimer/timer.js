@@ -28,6 +28,8 @@ export function countdown() {
 		if (!state.isBreak) {
 			state.isCounting = false;
 			timerBreak();
+		} else {
+			state.isBreak = false;
 		}
 		reset();
 		return;
@@ -47,11 +49,37 @@ export function countdown() {
 	setTimeout(countdown, 1000);
 }
 
-export function timerBreak() {
+export function countUp() {
+	let minutesValue = Number(minutes.textContent);
+	let secondsValue = Number(seconds.textContent);
+
+	if (!state.isCounting) return;
+
+	if (secondsValue === 59) {
+		minutesValue++;
+		secondsValue = 0;
+	} else {
+		secondsValue++;
+	}
+
+	updateDisplay(minutesValue, secondsValue);
+
+	setTimeout(countUp, 1000);
+}
+
+export function timerBreak(currentMinutes) {
+	let breakMinute;
+
 	state.isBreak = true;
-	let breakMinute = state.minutes / 5;
+
+	if (state.mode === 'pomodoro') {
+		breakMinute = pomodoro.minutes / 5;
+	} else {
+		breakMinute = Number(currentMinutes) / 5;
+	}
 
 	minutes.textContent = String(breakMinute).padStart(2, '0');
+	seconds.textContent = '00';
 	countdown();
 }
 

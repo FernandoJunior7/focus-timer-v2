@@ -200,6 +200,10 @@ button:focus {
 	outline: var(--secondary-color-base100) solid 2px;
 }
 
+#timer.stopwatch .pomodoro {
+	display: none;
+}
+
 /* ERROR MESSAGE */
 
 #time-error {
