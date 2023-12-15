@@ -8,10 +8,10 @@ export function start() {
 	if (state.isCounting) return;
 	sounds.buttonPress.play();
 	state.isCounting = true;
-	if (state.mode === 'pomodoro') {
-		timer.countdown();
+	if (state.currentMode === 'pomodoro') {
+		timer.startCountdown();
 	} else {
-		timer.countUp();
+		timer.startCountUp();
 	}
 }
 
@@ -21,7 +21,7 @@ export function reset() {
 	if (state.mode === 'stopwatch' && Number(minutes.textContent) > 0) {
 		timer.timerBreak(minutes.textContent);
 	} else {
-		updateDisplay();
+		timer.updateDisplay();
 	}
 }
 

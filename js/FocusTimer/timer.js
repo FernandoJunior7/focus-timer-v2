@@ -1,5 +1,6 @@
 import state from './state.js';
 import pomodoro from './pomodoro-settings.js';
+import stopwatch from './stopwatch-settings.js';
 import { minutes, seconds, errorSpan, timeError } from './elements/time.js';
 import { kitchenTimer } from './elements/sounds.js';
 import { reset } from './actions/timer-actions.js';
@@ -13,24 +14,44 @@ export function updateDisplay(minutesValue, secondsValue) {
 	 * @returns {void}
 	 */
 
-	if (state.currentMode === 'pomodoro') {
-		minutesValue = minutesValue ?? pomodoro.minutes;
-		secondsValue = secondsValue ?? pomodoro.seconds;
-	} else {
-		minutesValue = 0;
-		secondsValue = 0;
+	if (!state.isCounting) {
+		if (state.currentMode === 'pomodoro') {
+			minutesValue = minutesValue ?? pomodoro.minutes;
+			secondsValue = secondsValue ?? pomodoro.seconds;
+		} else {
+			minutesValue = 0;
+			secondsValue = 0;
+		}
 	}
 
 	minutes.textContent = String(minutesValue).padStart(2, '0');
 	seconds.textContent = String(secondsValue).padStart(2, '0');
 }
 
-export function countdown() {
-	let minutesValue = parseInt(minutes.textContent);
-	let secondsValue = parseInt(seconds.textContent);
+export function startCountdown() {
+	pomodoro.startTime = new Date();
+	pomodoro.targetTime = new Date(
+		pomodoro.startTime.getTime() + pomodoro.minutes * 60000
+	);
+	countdown();
+}
 
-	if (minutesValue === 0 && secondsValue === 0) {
-		kitchenTimer.play();
+export function countdown() {
+	const now = new Date();
+
+	if (!state.isCounting) return;
+
+	const timeDifference = pomodoro.targetTime - now - 1000;
+
+	let minutesValue = Math.floor(timeDifference / 60000);
+	let secondsValue = Math.floor((timeDifference % 60000) / 1000);
+
+	if (timeDifference === 0) {
+		try {
+			kitchenTimer.play();
+		} catch (error) {
+			console.error('Failed to play kitchen timer sound:', error);
+		}
 		if (!state.isBreak) {
 			state.isCounting = false;
 			timerBreak();
@@ -41,32 +62,24 @@ export function countdown() {
 		return;
 	}
 
-	if (!state.isCounting) return;
-
-	if (secondsValue === 0) {
-		minutesValue--;
-		secondsValue = 59;
-	} else {
-		secondsValue--;
-	}
-
 	updateDisplay(minutesValue, secondsValue);
-
 	setTimeout(countdown, 1000);
 }
 
+export function startCountUp() {
+	stopwatch.startTime = new Date();
+	countUp();
+}
+
 export function countUp() {
-	let minutesValue = Number(minutes.textContent);
-	let secondsValue = Number(seconds.textContent);
+	const now = new Date();
+
+	const timeDifference = now - stopwatch.startTime + 1000;
+
+	let minutesValue = Math.floor(timeDifference / 60000);
+	let secondsValue = Math.floor((timeDifference % 60000) / 1000);
 
 	if (!state.isCounting) return;
-
-	if (secondsValue === 59) {
-		minutesValue++;
-		secondsValue = 0;
-	} else {
-		secondsValue++;
-	}
 
 	updateDisplay(minutesValue, secondsValue);
 
