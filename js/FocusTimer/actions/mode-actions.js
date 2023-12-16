@@ -1,10 +1,9 @@
-import { pomodoro, stopwatch, timer } from '../elements/mode.js';
+import { pomodoro, stopwatch, timer } from '../elements.js';
 import state from '../state.js';
 import { updateDisplay } from '../timer.js';
 
-export function changeMode() {
+export function toggleMode() {
 	state.currentMode = state.modeMap[state.currentMode];
-	console.log(state.currentMode);
 	changeClass();
 	updateDisplay();
 }

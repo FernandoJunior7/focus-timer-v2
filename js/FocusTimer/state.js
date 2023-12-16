@@ -11,4 +11,6 @@ export default {
 		light: 'dark',
 		dark: 'light',
 	},
+	countDownID: null,
+	countUpID: null,
 };

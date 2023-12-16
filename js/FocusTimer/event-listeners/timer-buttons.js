@@ -1,20 +1,16 @@
-import {
-	startBtn,
-	resetBtn,
-	addTimeBtn,
-	subtractTimeBtn,
-} from '../elements/timer-buttons.js';
-import {
-	start,
-	reset,
-	addTime,
-	subtractTime,
-} from '../actions/timer-actions.js';
+import * as actions from '../actions/timer-actions.js';
+import { timerControls } from '../elements.js';
 
-startBtn.addEventListener('click', start);
+export function registerTimerControls() {
+	timerControls.addEventListener('click', (event) => {
+		const button = event.target.closest('button');
+		
+		if (!button) return;
 
-resetBtn.addEventListener('click', reset);
+		const action = button.dataset.action;
 
-addTimeBtn.addEventListener('click', addTime);
+		if (typeof actions[action] != 'function') return;
 
-subtractTimeBtn.addEventListener('click', subtractTime);
+		actions[action]();
+	});
+}

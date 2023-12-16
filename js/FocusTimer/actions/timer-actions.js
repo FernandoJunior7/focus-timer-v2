@@ -1,12 +1,12 @@
-import * as sounds from '../elements/sounds.js';
 import state from '../state.js';
 import pomodoro from '../pomodoro-settings.js';
+import stopwatch from '../stopwatch-settings.js';
 import * as timer from '../timer.js';
-import { minutes } from '../elements/time.js';
+import * as elements from '../elements.js';
 
 export function start() {
 	if (state.isCounting) return;
-	sounds.buttonPress.play();
+	elements.buttonPress.play();
 	state.isCounting = true;
 	if (state.currentMode === 'pomodoro') {
 		timer.startCountdown();
@@ -16,10 +16,14 @@ export function start() {
 }
 
 export function reset() {
-	sounds.buttonPress.play();
+	elements.buttonPress.play();
 	state.isCounting = false;
-	if (state.mode === 'stopwatch' && Number(minutes.textContent) > 0) {
-		timer.timerBreak(minutes.textContent);
+	if (
+		state.currentMode === 'stopwatch' &&
+		Number(elements.minutes.textContent) > 0
+	) {
+		stopwatch.endTime = new Date();
+		timer.timerBreak(stopwatch.endTime);
 	} else {
 		timer.updateDisplay();
 	}
@@ -31,7 +35,7 @@ export function addTime() {
 		return;
 	}
 	pomodoro.minutes += 5;
-	minutes.textContent = pomodoro.minutes.toString().padStart(2, '0');
+	elements.minutes.textContent = pomodoro.minutes.toString().padStart(2, '0');
 }
 
 export function subtractTime() {
@@ -40,5 +44,5 @@ export function subtractTime() {
 		return;
 	}
 	pomodoro.minutes -= 5;
-	minutes.textContent = pomodoro.minutes.toString().padStart(2, '0');
+	elements.minutes.textContent = pomodoro.minutes.toString().padStart(2, '0');
 }

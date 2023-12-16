@@ -1,6 +1,16 @@
-import { changeMode } from '../actions/mode-actions.js';
-import { pomodoro, stopwatch } from '../elements/mode.js';
+import * as actions from '../actions/mode-actions.js';
+import { modeControl } from '../elements.js';
 
-pomodoro.addEventListener('click', changeMode);
+export function registerModeControls() {
+	modeControl.addEventListener('click', (event) => {
+		const button = event.target.closest('button');
 
-stopwatch.addEventListener('click', changeMode);
+		if (!button) return;
+
+		const action = button.dataset.action;
+
+		if (typeof actions[action] != 'function') return;
+
+		actions[action]();
+	});
+}

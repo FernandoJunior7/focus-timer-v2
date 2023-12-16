@@ -135,7 +135,7 @@ button:focus {
 
 /* SELECT MODE */
 
-#timer-buttons,
+#timer-controls,
 #select-mode {
 	display: flex;
 	justify-content: space-around;
@@ -147,7 +147,7 @@ button:focus {
 	transition: 0.3s;
 }
 
-#timer-buttons button,
+#timer-controls button,
 #select-mode button {
 	border: none;
 	background-color: transparent;
@@ -189,14 +189,14 @@ button:focus {
 	line-height: 0.9;
 }
 
-/* TIMER BUTTONS */
+/* TIMER controls */
 
-#timer-buttons button:hover .icon,
-#timer-buttons button:focus .icon {
+#timer-controls button:hover .icon,
+#timer-controls button:focus .icon {
 	color: var(--accent-color);
 }
 
-#timer-buttons button:focus {
+#timer-controls button:focus {
 	outline: var(--secondary-color-base100) solid 2px;
 }
 
@@ -245,16 +245,16 @@ button:focus {
 	}
 }
 
-/* SOUNDS BUTTONS */
+/* SOUNDS controls */
 
-#sounds-buttons {
+#sounds-controls {
 	display: grid;
 	gap: 2rem;
 	grid-template-columns: repeat(2, 1fr);
 	grid-template-rows: repeat(2, 1fr);
 }
 
-#sounds-buttons button {
+#sounds-controls button {
 	border: none;
 	padding: 3rem;
 	border-radius: 1.5rem;
@@ -264,56 +264,56 @@ button:focus {
 	transition: 0.3s;
 }
 
-#sounds-buttons button#forest.active {
+#sounds-controls button#forest.active {
 	background-color: var(--green-base100);
 }
 
-#sounds-buttons button#forest.active:hover,
-#sounds-buttons button#forest.active:focus {
+#sounds-controls button#forest.active:hover,
+#sounds-controls button#forest.active:focus {
 	background-color: var(--green-base500);
 }
 
-#sounds-buttons button#forest.active:hover .icon,
-#sounds-buttons button#forest.active:focus .icon {
+#sounds-controls button#forest.active:hover .icon,
+#sounds-controls button#forest.active:focus .icon {
 	color: var(--lightgreen);
 }
 
-#sounds-buttons button#rain.active {
+#sounds-controls button#rain.active {
 	background-color: var(--blue-base100);
 }
 
-#sounds-buttons button#rain.active:hover {
+#sounds-controls button#rain.active:hover {
 	background-color: var(--blue-base500);
 }
 
-#sounds-buttons button#rain.active:hover .icon,
-#sounds-buttons button#rain.active:focus .icon {
+#sounds-controls button#rain.active:hover .icon,
+#sounds-controls button#rain.active:focus .icon {
 	color: var(--lightblue);
 }
 
-#sounds-buttons button#coffee-shop.active {
+#sounds-controls button#coffee-shop.active {
 	background-color: var(--brown-base100);
 }
 
-#sounds-buttons button#coffee-shop.active:hover {
+#sounds-controls button#coffee-shop.active:hover {
 	background-color: var(--brown-base500);
 }
 
-#sounds-buttons button#coffee-shop.active:hover .icon,
-#sounds-buttons button#coffee-shop.active:focus .icon {
+#sounds-controls button#coffee-shop.active:hover .icon,
+#sounds-controls button#coffee-shop.active:focus .icon {
 	color: var(--lightbrown);
 }
 
-#sounds-buttons button#fire.active {
+#sounds-controls button#fire.active {
 	background-color: var(--red-base100);
 }
 
-#sounds-buttons button#fire.active:hover {
+#sounds-controls button#fire.active:hover {
 	background-color: var(--red-base500);
 }
 
-#sounds-buttons button#fire.active:hover .icon,
-#sounds-buttons button#fire.active:focus .icon {
+#sounds-controls button#fire.active:hover .icon,
+#sounds-controls button#fire.active:focus .icon {
 	color: var(--lightred);
 }
 

@@ -18,7 +18,7 @@
 	</head>
 	<body>
 		<div id="toggle-theme">
-			<button>
+			<button data-action="toggleTheme">
 				<i class="icon light" data-lucide="sun"></i>
 				<i class="icon dark" data-lucide="moon"></i>
 			</button>
@@ -26,25 +26,37 @@
 		<main id="app">
 			<div id="timer" class="pomodoro">
 				<div id="select-mode">
-					<button id="pomodoro-button" class="selected">Pomodoro</button>
-					<button id="stopwatch-button">Stopwatch</button>
+					<button
+						id="pomodoro-button"
+						class="selected"
+						data-action="toggleMode"
+					>
+						Pomodoro
+					</button>
+					<button id="stopwatch-button" data-action="toggleMode">
+						Stopwatch
+					</button>
 				</div>
 				<div id="time">
 					<span id="minutes">25</span>
 					<span>:</span>
 					<span id="seconds">00</span>
 				</div>
-				<div id="timer-buttons">
-					<button id="start">
+				<div id="timer-controls">
+					<button id="start" data-action="start">
 						<i class="icon" data-lucide="play-circle"></i>
 					</button>
-					<button id="reset">
+					<button id="reset" data-action="reset">
 						<i class="icon" data-lucide="stop-circle"></i>
 					</button>
-					<button id="add-time" class="pomodoro">
+					<button id="add-time" class="pomodoro" data-action="addTime">
 						<i class="icon" data-lucide="plus-circle"></i>
 					</button>
-					<button id="subtract-time" class="pomodoro">
+					<button
+						id="subtract-time"
+						class="pomodoro"
+						data-action="subtractTime"
+					>
 						<i class="icon" data-lucide="minus-circle"></i>
 					</button>
 				</div>
@@ -53,17 +65,21 @@
 					<span class="error-message">mensagem de erro</span>
 				</div>
 			</div>
-			<div id="sounds-buttons">
-				<button id="forest">
+			<div id="sounds-controls">
+				<button id="forest" data-action="playSound" data-sound="forestSound">
 					<i class="icon" data-lucide="tree-pine"></i>
 				</button>
-				<button id="rain">
+				<button id="rain" data-action="playSound" data-sound="rainSound">
 					<i class="icon" data-lucide="cloud-rain"></i>
 				</button>
-				<button id="coffee-shop">
+				<button
+					id="coffee-shop"
+					data-action="playSound"
+					data-sound="coffeeShopSound"
+				>
 					<i class="icon" data-lucide="store"></i>
 				</button>
-				<button id="fire">
+				<button id="fire" data-action="playSound" data-sound="fireSound">
 					<i class="icon" data-lucide="flame"></i>
 				</button>
 			</div>

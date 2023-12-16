@@ -1,9 +1,8 @@
 import state from './state.js';
 import pomodoro from './pomodoro-settings.js';
 import stopwatch from './stopwatch-settings.js';
-import { minutes, seconds, errorSpan, timeError } from './elements/time.js';
-import { kitchenTimer } from './elements/sounds.js';
 import { reset } from './actions/timer-actions.js';
+import { timeError, errorMessage } from './elements.js';
 
 export function updateDisplay(minutesValue, secondsValue) {
 	/**
@@ -28,10 +27,15 @@ export function updateDisplay(minutesValue, secondsValue) {
 	seconds.textContent = String(secondsValue).padStart(2, '0');
 }
 
+// TODO: FIX THE TIMER DECREASING 2 SECONDS WHEN CLICKED (FROM 25:00 TO 24:58, FOR EXAMPLE)
+
+const MINUTE_IN_MILLISECONDS = 60000;
+const SECOND_IN_MILLISECONDS = 1000;
+
 export function startCountdown() {
 	pomodoro.startTime = new Date();
 	pomodoro.targetTime = new Date(
-		pomodoro.startTime.getTime() + pomodoro.minutes * 60000
+		pomodoro.startTime.getTime() + pomodoro.minutes * MINUTE_IN_MILLISECONDS
 	);
 	countdown();
 }
@@ -41,10 +45,12 @@ export function countdown() {
 
 	if (!state.isCounting) return;
 
-	const timeDifference = pomodoro.targetTime - now - 1000;
+	const timeDifference = pomodoro.targetTime - now;
 
-	let minutesValue = Math.floor(timeDifference / 60000);
-	let secondsValue = Math.floor((timeDifference % 60000) / 1000);
+	let minutesValue = Math.floor(timeDifference / MINUTE_IN_MILLISECONDS);
+	let secondsValue = Math.floor(
+		(timeDifference % MINUTE_IN_MILLISECONDS) / SECOND_IN_MILLISECONDS
+	);
 
 	if (timeDifference === 0) {
 		try {
@@ -63,7 +69,9 @@ export function countdown() {
 	}
 
 	updateDisplay(minutesValue, secondsValue);
-	setTimeout(countdown, 1000);
+
+	clearTimeout(state.countDownID);
+	state.countDownID = setTimeout(countdown, 1000);
 }
 
 export function startCountUp() {
@@ -74,7 +82,7 @@ export function startCountUp() {
 export function countUp() {
 	const now = new Date();
 
-	const timeDifference = now - stopwatch.startTime + 1000;
+	const timeDifference = now - stopwatch.startTime;
 
 	let minutesValue = Math.floor(timeDifference / 60000);
 	let secondsValue = Math.floor((timeDifference % 60000) / 1000);
@@ -83,9 +91,11 @@ export function countUp() {
 
 	updateDisplay(minutesValue, secondsValue);
 
-	setTimeout(countUp, 1000);
+	clearTimeout(state.countUpID);
+	state.countUpID = setTimeout(countUp, 1000);
 }
 
+// TODO: FIX TIMER BREAK (NOW USING THE DATE OBJECT)
 export function timerBreak(currentMinutes) {
 	let breakMinute;
 
@@ -114,7 +124,7 @@ export function timerError() {
 	}
 
 	timeError.classList.remove('hide');
-	errorSpan.textContent = message;
+	errorMessage.textContent = message;
 
 	setTimeout(() => {
 		timeError.classList.add('hide');
