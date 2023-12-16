@@ -114,9 +114,11 @@ export function timerError() {
 
 	if (state.isCounting || state.isBreak) {
 		message = `Não é permitido adicionar ou subtrair tempo enquanto o timer está ativo`;
-	} else if (pomodoro.minutes === 25) {
+	}
+	if (pomodoro.minutes === 25) {
 		message = `Não é permitido o timer possuir menos que ${pomodoro.minutes} minutos`;
-	} else {
+	}
+	if (pomodoro.minutes === 60) {
 		message = `Não é permitido o timer possuir mais que ${pomodoro.minutes} minutos`;
 	}
 
@@ -125,5 +127,5 @@ export function timerError() {
 
 	setTimeout(() => {
 		timeError.classList.add('hide');
-	}, 10000);
+	}, 10 * SECOND_IN_MILLISECONDS);
 }
