@@ -27,15 +27,12 @@ export function updateDisplay(minutesValue, secondsValue) {
 	seconds.textContent = String(secondsValue).padStart(2, '0');
 }
 
-// TODO: FIX THE TIMER DECREASING 2 SECONDS WHEN CLICKED (FROM 25:00 TO 24:58, FOR EXAMPLE)
-
 const MINUTE_IN_MILLISECONDS = 60000;
 const SECOND_IN_MILLISECONDS = 1000;
 
 export function startCountdown() {
-	pomodoro.startTime = new Date();
 	pomodoro.targetTime = new Date(
-		pomodoro.startTime.getTime() + pomodoro.minutes * MINUTE_IN_MILLISECONDS
+		Date.now() + pomodoro.minutes * MINUTE_IN_MILLISECONDS
 	);
 	countdown();
 }
