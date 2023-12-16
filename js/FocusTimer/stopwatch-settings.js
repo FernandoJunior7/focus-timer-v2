@@ -1,4 +1,3 @@
 export default {
-  startTime: null,
-  endTime: null,
-}
+	startTime: null,
+};

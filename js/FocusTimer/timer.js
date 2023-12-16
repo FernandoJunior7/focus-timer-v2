@@ -81,8 +81,10 @@ export function countUp() {
 
 	const timeDifference = now - stopwatch.startTime;
 
-	let minutesValue = Math.floor(timeDifference / 60000);
-	let secondsValue = Math.floor((timeDifference % 60000) / 1000);
+	let minutesValue = Math.floor(timeDifference / MINUTE_IN_MILLISECONDS);
+	let secondsValue = Math.floor(
+		(timeDifference % MINUTE_IN_MILLISECONDS) / SECOND_IN_MILLISECONDS
+	);
 
 	if (!state.isCounting) return;
 
@@ -93,16 +95,20 @@ export function countUp() {
 }
 
 // TODO: FIX TIMER BREAK (NOW USING THE DATE OBJECT)
-export function timerBreak(currentMinutes) {
+export function timerBreak() {
 	let breakMinute;
 
 	state.isBreak = true;
 
-	if (state.mode === 'pomodoro') {
-		breakMinute = pomodoro.minutes / 5;
-	} else {
-		breakMinute = Number(currentMinutes) / 5;
+	if (state.currentMode === 'pomodoro') {
+		breakMinute = pomodoro.minutes;
 	}
+	if (state.currentMode === 'stopwatch') {
+		const timeDifference = Date.now() - stopwatch.startTime;
+		breakMinute = Math.floor(timeDifference / MINUTE_IN_MILLISECONDS);
+	}
+
+	breakMinute /= 5;
 
 	minutes.textContent = String(breakMinute).padStart(2, '0');
 	seconds.textContent = '00';

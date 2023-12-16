@@ -18,12 +18,8 @@ export function start() {
 export function reset() {
 	elements.buttonPress.play();
 	state.isCounting = false;
-	if (
-		state.currentMode === 'stopwatch' &&
-		Number(elements.minutes.textContent) > 0
-	) {
-		stopwatch.endTime = new Date();
-		timer.timerBreak(stopwatch.endTime);
+	if (state.currentMode === 'stopwatch') {
+		timer.timerBreak();
 	} else {
 		timer.updateDisplay();
 	}
