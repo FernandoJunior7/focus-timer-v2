@@ -49,7 +49,7 @@ export function countdown() {
 		(timeDifference % MINUTE_IN_MILLISECONDS) / SECOND_IN_MILLISECONDS
 	);
 
-	if (timeDifference === 0) {
+	if (timeDifference <= 0) {
 		try {
 			kitchenTimer.play();
 		} catch (error) {
