@@ -60,8 +60,8 @@ export function countdown() {
 			timerBreak();
 		} else {
 			state.isBreak = false;
+			reset();
 		}
-		reset();
 		return;
 	}
 
@@ -96,6 +96,8 @@ export function countUp() {
 
 // TODO: FIX TIMER BREAK (NOW USING THE DATE OBJECT)
 export function timerBreak() {
+	console.log('estou no break time');
+
 	let breakMinute;
 
 	state.isBreak = true;
@@ -110,8 +112,7 @@ export function timerBreak() {
 
 	breakMinute /= 5;
 
-	minutes.textContent = String(breakMinute).padStart(2, '0');
-	seconds.textContent = '00';
+	updateDisplay(breakMinute);
 	countdown();
 }
 
