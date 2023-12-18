@@ -2,7 +2,7 @@ import state from './state.js';
 import pomodoro from './pomodoro-settings.js';
 import stopwatch from './stopwatch-settings.js';
 import { reset } from './actions/timer-actions.js';
-import { timeError, errorMessage } from './elements.js';
+import { timeError, errorMessage, kitchenTimer } from './elements.js';
 
 export function updateDisplay(minutesValue, secondsValue) {
 	/**
@@ -31,9 +31,15 @@ const MINUTE_IN_MILLISECONDS = 60000;
 const SECOND_IN_MILLISECONDS = 1000;
 
 export function startCountdown() {
-	pomodoro.targetTime = new Date(
-		Date.now() + pomodoro.minutes * MINUTE_IN_MILLISECONDS
-	);
+	if (!state.isBreak) {
+		pomodoro.targetTime = new Date(
+			Date.now() + pomodoro.minutes * MINUTE_IN_MILLISECONDS
+		);
+	} else {
+		pomodoro.targetTime = new Date(
+			Date.now() + (pomodoro.minutes / 5) * MINUTE_IN_MILLISECONDS
+		);
+	}
 	countdown();
 }
 
@@ -96,8 +102,6 @@ export function countUp() {
 
 // TODO: FIX TIMER BREAK (NOW USING THE DATE OBJECT)
 export function timerBreak() {
-	console.log('estou no break time');
-
 	let breakMinute;
 
 	state.isBreak = true;
@@ -113,7 +117,6 @@ export function timerBreak() {
 	breakMinute /= 5;
 
 	updateDisplay(breakMinute);
-	countdown();
 }
 
 export function timerError() {
