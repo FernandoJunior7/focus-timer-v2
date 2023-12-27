@@ -13,15 +13,12 @@ export function updateDisplay(minutesValue, secondsValue) {
 	 * @returns {void}
 	 */
 
-	if (!state.isCounting) {
-		if (state.currentMode === 'pomodoro') {
-			minutesValue = minutesValue ?? pomodoro.minutes;
-			secondsValue = secondsValue ?? pomodoro.seconds;
-		} else {
-			minutesValue = 0;
-			secondsValue = 0;
-		}
-	}
+	if (state.isCounting) return;
+
+	if (state.currentMode === 'pomodoro') {
+		minutesValue = minutesValue ?? pomodoro.minutes;
+		secondsValue = secondsValue ?? pomodoro.seconds;
+	} 
 
 	minutes.textContent = String(minutesValue).padStart(2, '0');
 	seconds.textContent = String(secondsValue).padStart(2, '0');
@@ -114,7 +111,7 @@ export function timerBreak() {
 		breakMinute = Math.floor(timeDifference / MINUTE_IN_MILLISECONDS);
 	}
 
-	breakMinute /= 5;
+	breakMinute /= Math.floor(breakMinute / 5);
 
 	updateDisplay(breakMinute);
 }
