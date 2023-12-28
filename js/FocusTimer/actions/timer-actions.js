@@ -10,7 +10,8 @@ export function start() {
 	state.isCounting = true;
 	if (state.currentMode === 'pomodoro') {
 		timer.startCountdown();
-	} else {
+	}
+	if (state.currentMode === 'stopwatch') {
 		timer.startCountUp();
 	}
 }
@@ -18,10 +19,11 @@ export function start() {
 export function reset() {
 	elements.buttonPress.play();
 	state.isCounting = false;
+	if (state.currentMode === 'pomodoro') {
+		timer.updateDisplay();
+	}
 	if (state.currentMode === 'stopwatch') {
 		timer.timerBreak();
-	} else {
-		timer.updateDisplay();
 	}
 }
 

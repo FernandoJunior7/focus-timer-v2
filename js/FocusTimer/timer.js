@@ -13,15 +13,13 @@ export function updateDisplay(minutesValue, secondsValue) {
 	 * @returns {void}
 	 */
 
-	if (state.isCounting) return;
-
 	if (state.currentMode === 'pomodoro') {
 		minutesValue = minutesValue ?? pomodoro.minutes;
 		secondsValue = secondsValue ?? pomodoro.seconds;
-	} 
+	}
 	if (state.currentMode === 'stopwatch' && !state.isBreak) {
-		minutesValue = 0;
-		secondsValue = 0;
+		minutesValue = minutesValue ?? 0;
+		secondsValue = secondsValue ?? 0;
 	}
 
 	minutes.textContent = String(minutesValue).padStart(2, '0');
@@ -105,8 +103,6 @@ export function countUp() {
 export function timerBreak() {
 	let breakMinute;
 
-	state.isBreak = true;
-
 	if (state.currentMode === 'pomodoro') {
 		breakMinute = pomodoro.minutes;
 	}
@@ -114,8 +110,14 @@ export function timerBreak() {
 		const timeDifference = Date.now() - stopwatch.startTime;
 		breakMinute = Math.floor(timeDifference / MINUTE_IN_MILLISECONDS);
 	}
+	if (breakMinute < 5) {
+		updateDisplay();
+		return;
+	}
 
 	breakMinute /= Math.floor(breakMinute / 5);
+
+	state.isBreak = true;
 
 	updateDisplay(breakMinute);
 }
