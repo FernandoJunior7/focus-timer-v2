@@ -19,6 +19,10 @@ export function updateDisplay(minutesValue, secondsValue) {
 		minutesValue = minutesValue ?? pomodoro.minutes;
 		secondsValue = secondsValue ?? pomodoro.seconds;
 	} 
+	if (state.currentMode === 'stopwatch' && !state.isBreak) {
+		minutesValue = 0;
+		secondsValue = 0;
+	}
 
 	minutes.textContent = String(minutesValue).padStart(2, '0');
 	seconds.textContent = String(secondsValue).padStart(2, '0');
